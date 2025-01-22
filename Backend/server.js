@@ -15,9 +15,7 @@ const port = process.env.PORT || 4000;
 
 //middleware
 app.use(express.json());
-app.use(cors({
-  origin: "https://fullstack-food-fontend.onrender.com", // Replace with your frontend's URL
-}));
+app.use(cors());
 
 //DB connection
 connectDB();
