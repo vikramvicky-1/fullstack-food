@@ -10,7 +10,7 @@ const StoreContextProvider = (props) => {
   const [token, setToken] = useState("");
   const [food_list, setFood_list] = useState([]);
   const [userName, setUserName] = useState("");
-  const url = "http://localhost:4000";
+  const url = "https://fullstack-food-backend-7bpz.onrender.com";
 
   // Function to update cart data and calculate total quantity
   const updateCartData = (cartData) => {
