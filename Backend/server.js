@@ -6,6 +6,8 @@ import userRouter from "./Routes/UserRoute.js";
 import "dotenv/config.js";
 import cartRouter from "./Routes/cartRoute.js";
 import orderRouter from "./Routes/orderRoute.js";
+import path from "path";
+
 
 //app config
 const app = express();
@@ -23,7 +25,8 @@ app.get("/", (req, res) => {
 
 //API Endpoint
 app.use("/api/food", foodRouter);
-app.use("/images", express.static("uploads"));
+app.use("/images", express.static(path.join(path.resolve(), "uploads")));
+
 app.use("/api/user", userRouter);
 app.use("/api/cart", cartRouter);
 app.use("/api/order", orderRouter);
