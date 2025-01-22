@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import "./Cart.css";
 import { StoreContext } from "../../../public/Context/StoreContext";
 import { Link, useNavigate } from "react-router-dom";
+import { assets } from "../../assets/assets";
 
 const Cart = () => {
   const { food_list, cartitems, removeFromCart, calculateSubtotal, cartQty } =
@@ -30,7 +31,7 @@ const Cart = () => {
                 return (
                   <React.Fragment key={item._id}>
                     <div className="cart-items-title cart-items-item">
-                      <img src={item.image} alt="" />
+                      <img src={item.image} alt="" id="item-img" />
                       <p>{item.name}</p>
                       <p>₹ {item.price}</p>
                       <p>{cartitems[item._id]}</p>
@@ -41,7 +42,11 @@ const Cart = () => {
                         }}
                         className="cross"
                       >
-                        X
+                        <img
+                          src={assets.cross_icon}
+                          id="cart-remove-icon"
+                          alt=""
+                        />
                       </p>
                     </div>
                     <hr id="hr" />

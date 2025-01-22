@@ -7,11 +7,13 @@ import { toast, Bounce } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
 import { useNavigate } from "react-router-dom";
+import { Loader } from "../Loader/Loader";
 const LoginPopup = ({ setShowlogin }) => {
   const [currentstate, SetCurrentstate] = useState("login");
   const { url, setToken, loadCartData } = useContext(StoreContext);
   const [passwordIcon, setPasswordIcon] = useState(faEyeSlash);
   const [passwordType, setPasswordType] = useState("password");
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
   const navigate = useNavigate();
   const [data, setData] = useState({
     name: "",
@@ -33,6 +35,7 @@ const LoginPopup = ({ setShowlogin }) => {
       newUrl += "/api/user/signup";
     }
     try {
+      setIsLoggingIn(true);
       const response = await axios.post(newUrl, data);
 
       if (response.data.success) {
@@ -84,6 +87,8 @@ const LoginPopup = ({ setShowlogin }) => {
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsLoggingIn(false);
     }
   };
   const passwordHandler = () => {
@@ -146,8 +151,14 @@ const LoginPopup = ({ setShowlogin }) => {
               />
             </div>
           </div>
-          <button type="submit">
-            {currentstate === "login" ? "Login" : "Create account"}
+          <button type="submit" className="login-btn" disabled={isLoggingIn}>
+            {isLoggingIn ? (
+              <Loader />
+            ) : currentstate === "login" ? (
+              "Login"
+            ) : (
+              "Sign up"
+            )}
           </button>
           <div className="login-popup-checkbox">
             <p>

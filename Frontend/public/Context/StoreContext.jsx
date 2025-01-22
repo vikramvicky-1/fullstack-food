@@ -10,6 +10,7 @@ const StoreContextProvider = (props) => {
   const [token, setToken] = useState("");
   const [food_list, setFood_list] = useState([]);
   const [userName, setUserName] = useState("");
+  const [isAddingToCart, setIsAddingToCart] = useState(false);
   const url = "https://fullstack-food-backend-7bpz.onrender.com";
 
   // Function to update cart data and calculate total quantity
@@ -23,14 +24,38 @@ const StoreContextProvider = (props) => {
   };
 
   const addToCart = async (itemId) => {
-    if (token) {
-      const response = await axios.post(
-        `${url}/api/cart/add`,
-        { itemId },
-        { headers: { token } }
-      );
-      if (response.data.success) {
-        toast.success(response.data.message, {
+    try {
+      setIsAddingToCart(true);
+      if (token) {
+        const response = await axios.post(
+          `${url}/api/cart/add`,
+          { itemId },
+          { headers: { token } }
+        );
+        if (response.data.success) {
+          toast.success(response.data.message, {
+            position: "top-center",
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+          });
+
+          // Update cart state in context
+          const updatedCartItems = {
+            ...cartitems,
+            [itemId]: (cartitems[itemId] || 0) + 1,
+          };
+          setCartitems(updatedCartItems);
+          // Update cartQty after the change
+          updateCartData(updatedCartItems);
+        }
+      } else {
+        toast.error("Please, Login to add Food", {
           position: "top-center",
           autoClose: 1000,
           hideProgressBar: false,
@@ -41,60 +66,49 @@ const StoreContextProvider = (props) => {
           theme: "light",
           transition: Bounce,
         });
-
-        // Update cart state in context
-        const updatedCartItems = {
-          ...cartitems,
-          [itemId]: (cartitems[itemId] || 0) + 1,
-        };
-        setCartitems(updatedCartItems);
-        // Update cartQty after the change
-        updateCartData(updatedCartItems);
       }
-    } else {
-      toast.error("Please, Login to add Food", {
-        position: "top-center",
-        autoClose: 1000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        transition: Bounce,
-      });
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsAddingToCart(false); //
     }
   };
-
   const removeFromCart = async (itemId) => {
-    if (token) {
-      const response = await axios.post(
-        `${url}/api/cart/remove`,
-        { itemId },
-        { headers: { token } }
-      );
-      if (response.data.success) {
-        toast.error(response.data.message, {
-          position: "top-center",
-          autoClose: 1000,
-          hideProgressBar: false,
-          closeOnClick: false,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-          transition: Bounce,
-        });
+    try {
+      setIsAddingToCart(true);
+      if (token) {
+        const response = await axios.post(
+          `${url}/api/cart/remove`,
+          { itemId },
+          { headers: { token } }
+        );
+        if (response.data.success) {
+          toast.error(response.data.message, {
+            position: "top-center",
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+          });
 
-        // Update cart state in context
-        const updatedCartItems = {
-          ...cartitems,
-          [itemId]: cartitems[itemId] - 1,
-        };
-        setCartitems(updatedCartItems);
-        // Update cartQty after the change
-        updateCartData(updatedCartItems);
+          // Update cart state in context
+          const updatedCartItems = {
+            ...cartitems,
+            [itemId]: cartitems[itemId] - 1,
+          };
+          setCartitems(updatedCartItems);
+          // Update cartQty after the change
+          updateCartData(updatedCartItems);
+        }
       }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsAddingToCart(false);
     }
   };
 
@@ -142,11 +156,18 @@ const StoreContextProvider = (props) => {
 
   useEffect(() => {
     async function loadData() {
-      await fetchFood();
-      const savedToken = localStorage.getItem("token");
-      if (savedToken) {
-        setToken(savedToken);
-        await loadCartData(savedToken); // Fetch cart data when token exists
+      try {
+        setIsAddingToCart(true); ///
+        await fetchFood();
+        const savedToken = localStorage.getItem("token");
+        if (savedToken) {
+          setToken(savedToken);
+          await loadCartData(savedToken); // Fetch cart data when token exists
+        }
+      } catch (error) {
+        console.log("Error fetching", error);
+      } finally {
+        setIsAddingToCart(false);
       }
     }
     loadData();
@@ -169,6 +190,7 @@ const StoreContextProvider = (props) => {
     userName,
     setUserName,
     fetchFood,
+    isAddingToCart,
   };
 
   return (

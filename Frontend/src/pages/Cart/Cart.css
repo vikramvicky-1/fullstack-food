@@ -9,7 +9,7 @@
   font-size: max(1.2vw, 12px);
 }
 
-.cart-items-item img {
+.cart-items-item #item-img {
   width: 6vw;
   min-width: 50px;
   border-radius: 5px;
@@ -23,11 +23,6 @@
   height: 1px;
   border: none;
   background-color: #b6b6b6;
-}
-.cart-items-item .cross {
-  cursor: pointer;
-  color: red;
-  margin-left: 25px;
 }
 /* cart checkout section design */
 .cart-bottom {
@@ -125,6 +120,11 @@
 }
 .cart-empty button:hover {
   background-color: tomato;
+  cursor: pointer;
+}
+#cart-remove-icon {
+  background-color: red;
+  width: 20px;
   cursor: pointer;
 }
 @media (max-width: 900px) {

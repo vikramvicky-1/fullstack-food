@@ -1,11 +1,11 @@
 .login-popup {
-  position: absolute;
-  width: 100%;
-  height: 100%;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
   z-index: 1;
   display: grid;
   background-color: #00000050;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(6px);
   animation: loader 0.4s linear;
 }
 .login-popup-container {
@@ -53,10 +53,10 @@
   border: none;
   border-radius: 5px;
   background-color: tomato;
+  cursor: pointer;
 }
 .login-popup-container button:hover {
   background-color: rgb(255, 79, 48);
-  cursor: pointer;
 }
 .login-popup-checkbox input {
   height: 15px;
@@ -81,4 +81,14 @@
   right: 5%;
   cursor: pointer;
   color: tomato;
+}
+.login-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-btn:disabled {
+  background-color: tomato;
+  cursor: not-allowed;
+  cursor: progress;
 }
