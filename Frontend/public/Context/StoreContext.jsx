@@ -191,6 +191,7 @@ const StoreContextProvider = (props) => {
     setUserName,
     fetchFood,
     isAddingToCart,
+    setIsAddingToCart,
   };
 
   return (

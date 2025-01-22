@@ -5,8 +5,15 @@ import axios from "axios";
 import { toast, Bounce } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 const PlaceOrder = () => {
-  const { calculateSubtotal, token, food_list, cartitems, url, cartQty } =
-    useContext(StoreContext);
+  const {
+    calculateSubtotal,
+    token,
+    food_list,
+    cartitems,
+    url,
+    cartQty,
+    setIsAddingToCart,
+  } = useContext(StoreContext);
   const subtotal = calculateSubtotal();
   const deliveryFee = 45.0;
   const total = subtotal + deliveryFee;
@@ -50,6 +57,7 @@ const PlaceOrder = () => {
     });
 
     try {
+      setIsAddingToCart(true); //
       let orderData = {
         address: data,
         items: orderItems,
@@ -87,6 +95,8 @@ const PlaceOrder = () => {
         theme: "light",
         transition: Bounce,
       });
+    } finally {
+      setIsAddingToCart(false);
     }
   };
   return (
