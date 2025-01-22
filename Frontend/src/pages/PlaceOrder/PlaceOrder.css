@@ -1,0 +1,43 @@
+.place-order {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 100px;
+}
+.place-order-left p {
+  font-size: 30px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+.place-order-left {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.place-order-left input {
+  border-radius: 5px;
+  border: 1px solid grey;
+  height: 40px;
+  outline: none;
+  font-size: 18px;
+  padding-left: 20px;
+  color: grey;
+}
+.place-order-left .multi-fields {
+  display: flex;
+  gap: 10px;
+}
+@media (max-width: 1050px) {
+  .place-order {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+  }
+}
+@media (max-width: 550px) {
+  .place-order-left .multi-fields {
+    display: flex;
+    flex-direction: column;
+  }
+}

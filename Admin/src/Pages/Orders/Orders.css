@@ -1,0 +1,80 @@
+.my-order-container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  margin-top: 30px;
+  border: 2px solid tomato;
+  background-color: rgb(255, 253, 252);
+}
+.admin-orders {
+  width: 100%;
+}
+.my-order-container p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: normal;
+}
+#item-name {
+  justify-content: flex-start;
+}
+.my-order-container img {
+  height: 50px;
+}
+.my-order-container p {
+  font-size: 18px;
+  color: #49557e;
+}
+
+.my-order-container span {
+  font-size: 30px;
+}
+
+.admin-orders {
+  padding: 10px;
+}
+#address {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  white-space: normal;
+}
+.my-order-container select {
+  padding: 10px;
+  border: 1px solid tomato;
+  font-size: 18px;
+}
+.my-order-container select option {
+  padding: 10px;
+  border: 1px solid tomato;
+  font-size: 18px;
+}
+@media (min-width: 1200px) {
+  .my-order-container {
+    grid-template-columns: repeat(6, 1fr); /* 6 columns */
+  }
+}
+
+/* Media Query: For medium screens (e.g., tablets) */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .my-order-container {
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+  }
+}
+
+/* Media Query: For small screens (e.g., large phones) */
+@media (min-width: 576px) and (max-width: 767px) {
+  .my-order-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  }
+}
+
+/* Media Query: For extra small screens (e.g., small phones) */
+@media (max-width: 575px) {
+  .my-order-container {
+    grid-template-columns: 1fr; /* 1 column */
+  }
+}

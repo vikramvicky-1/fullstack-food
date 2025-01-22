@@ -1,0 +1,145 @@
+.cart {
+  margin-top: 100px;
+}
+.cart-items-title {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr 1fr 1fr 0.5fr;
+  color: grey;
+  align-items: center;
+  font-size: max(1.2vw, 12px);
+}
+
+.cart-items-item img {
+  width: 6vw;
+  min-width: 50px;
+  border-radius: 5px;
+}
+.cart-items-item {
+  margin: 15px 0px;
+  color: black;
+  font-weight: 600;
+}
+#hr {
+  height: 1px;
+  border: none;
+  background-color: #b6b6b6;
+}
+.cart-items-item .cross {
+  cursor: pointer;
+  color: red;
+  margin-left: 25px;
+}
+/* cart checkout section design */
+.cart-bottom {
+  width: 50%;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: max(12vw, 20px);
+}
+.cart-total {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.cart-total-details {
+  display: flex;
+  justify-content: space-between;
+  color: #555;
+}
+.cart-total hr {
+  margin: 10px 0px;
+}
+.cart-total h2 {
+  font-size: max(2vw, 24px);
+  font-weight: 600;
+}
+.cart-total-details p {
+  font-size: 18px;
+}
+.cart-total-details b {
+  font-size: 22px;
+  color: black;
+  font-weight: 500;
+}
+.cart-promocode {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.cart-promocode p {
+  font-size: max(1.2vw, 18px);
+}
+.cart-promocode-input {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 10px;
+  gap: 3px;
+}
+.cart-promocode-input input {
+  border: 1px solid black;
+  outline: none;
+  height: 30px;
+  width: 400px;
+  font-size: 16px;
+  padding-left: 20px;
+  border-radius: 5px;
+}
+.cart-promocode button {
+  border: none;
+  height: 30px;
+  color: white;
+  font-size: 18px;
+  border-radius: 3px;
+  font-weight: 500;
+  background-color: tomato;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.checkout-btn {
+  width: 300px;
+}
+.cart-promocode-input .submit-btn {
+  background-color: black;
+}
+.cart-empty {
+  margin-top: 100px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.cart-empty h2 {
+  font-weight: 500;
+  font-size: 30px;
+}
+.cart-empty button {
+  border-radius: 10px;
+  border: 1px solid tomato;
+  background-color: white;
+  padding: 10px 20px;
+  font-size: 20px;
+  transition: 0.3s;
+}
+.cart-empty button:hover {
+  background-color: tomato;
+  cursor: pointer;
+}
+@media (max-width: 900px) {
+  .cart-bottom {
+    width: 65%;
+  }
+}
+@media (max-width: 750px) {
+  .cart-bottom {
+    width: 80%;
+  }
+}
+@media (max-width: 500px) {
+  .cart-bottom,
+  .check-out-btn {
+    width: 100%;
+  }
+}

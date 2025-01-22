@@ -1,0 +1,32 @@
+.mobile-app {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  text-align: center;
+  margin: auto auto;
+  margin-top: 100px;
+  font-weight: 500;
+}
+.mobile-app-content h2 {
+  font-size: max(3vw, 20px);
+  text-align: center;
+  font-weight: 500;
+}
+.mobile-app-content span {
+  color: tomato;
+}
+.mobile-app-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+}
+.mobile-app-image img {
+  transition: 0.7s;
+  width: max(30vw, 120px);
+  max-width: 180px;
+}
+.mobile-app-image img:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}

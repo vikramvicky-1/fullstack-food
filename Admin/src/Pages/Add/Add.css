@@ -1,0 +1,57 @@
+.add {
+  margin-left: max(6vw, 10px);
+  margin-top: max(4vw, 10px);
+  font-size: max(1.2vw, 18px);
+  color: rgb(91, 91, 91);
+  font-weight: 400;
+}
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.add img {
+  width: 150px;
+  cursor: pointer;
+}
+.add input {
+  width: max(6vw, 300px);
+  height: 40px;
+  border: 1px solid #747474;
+  outline: none;
+  font-size: 16px;
+  padding-left: 10px;
+}
+.add/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.add-product-description textarea {
+  resize: none;
+  outline: none;
+  font-size: 16px;
+  padding-left: 10px;
+}
+.add-category select {
+  height: 40px;
+  font-size: 16px;
+  cursor: pointer;
+  outline: none;
+}
+.add-btn {
+  width: max(2vw, 120px);
+  border: none;
+  height: 40px;
+  font-size: 18px;
+  color: white;
+  background-color: black;
+  border-radius: 5px;
+  cursor: pointer;
+}
+@media (max-width: 400px) {
+  .add {
+    margin-left: 10px;
+  }
+}

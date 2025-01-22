@@ -1,0 +1,81 @@
+.list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  margin-top: 30px;
+  text-align: center;
+  position: relative;
+}
+.list-head {
+  font-size: 25px;
+  font-weight: 400;
+}
+.list-table-format {
+  width: 100%;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid gray;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
+  column-gap: 30px;
+}
+.list-table-format img {
+  width: 80px;
+}
+.remove {
+  width: fit-content;
+  margin-left: 30px;
+  font-size: 20px;
+  color: red;
+  font-weight: 400;
+  cursor: pointer;
+}
+.confirm-popup {
+  position: absolute;
+  align-self: center;
+  z-index: 1;
+  width: 300px;
+  height: 150px;
+  background-color: whitesmoke;
+  border: 1px solid tomato;
+  top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 16px;
+  position: fixed;
+}
+.confirm-popup .item-name {
+  font-size: 18px;
+  font-weight: 500;
+  color: #49557e;
+}
+.confirm-popup-btn {
+  display: flex;
+  gap: 50px;
+}
+.confirm-popup-btn button {
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+}
+.confirm-popup-btn .delete {
+  background-color: rgb(255, 200, 200);
+  border: 2px solid rgb(255, 0, 0);
+}
+.confirm-popup-btn .cancel {
+  background-color: rgb(200, 255, 200);
+  border: 2px solid rgb(0, 155, 0);
+}
+@media (max-width: 550px) {
+  .remove {
+    margin-left: 0px;
+  }
+}
