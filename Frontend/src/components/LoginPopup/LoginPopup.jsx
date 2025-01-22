@@ -22,7 +22,13 @@ const LoginPopup = ({ setShowlogin }) => {
   });
   const onChangeHandler = (event) => {
     const name = event.target.name;
-    const value = event.target.value;
+    let value = event.target.value;
+
+    // Convert email to lowercase
+    if (name === "email") {
+      value = value.toLowerCase();
+    }
+
     setData((data) => ({ ...data, [name]: value }));
   };
 
